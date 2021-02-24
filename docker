@@ -1,0 +1,45 @@
+# ------------------------------------------------- DOCKER --------------------------------------------------------
+docker run -it --rm  --name kochetkov -v/mnt:/mnt -v/mnt/raid10/home:/home --gpus 'device=8' --user 1000:1000 speaker_id_image   выходить нельзя (с консолью)
+docker run -d --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik/network --gpus 'device=8' --user 1000:1000 80f76638dcfd python3 main.py 
+docker run -d --rm  --name kochetkov_clean_transcripted -v/mnt:/mnt -w/mnt/nvme/vovik/clean_data --gpus 'device=7' --user 1000:1000 speaker_id_image python3 using_diarization.py
+фоновый режим (без консоли)
+sudo docker run -it --rm  --name kochetkov -v/mnt:/mnt -v/mnt/raid10/home:/home --gpus 'device=7' 4ac7b40d9e67
+
+-v
+  dir /mnt/raid10/home will be used as /home
+  dir /mnt will be used as /mnt
+
+--rm
+   удаление контейнера после его остановки
+
+# вывести весь вывод скрипта, запущенного в контейнере
+docker logs container_ID
+docker logs container_ID &> test.log
+
+# удалить остановленный контейнер
+docker container rm container_ID
+
+# остановить работу контейнера 
+docker stop container_id
+
+# список доступных образов
+docker image ls
+
+# скачать образ c docker hub
+docker pull image_name
+
+# после добавления/удаления либ в имадже можно сохранить изменения в нем.
+# нужно открыть контейнер на базе нашего имаджа. Установить в него либы
+# затем в новом окне консоли узнаем ID контейнера, в котором проводились изменения.
+docker commit container_ID REPOSITORY_NAME:TAG
+
+# задать имаджу новый REPOSITORY_NAME:TAG
+docker tag IMAGE_ID NEW_REPOSITORY_NAME:NEW_TAG
+
+htop - информация по процессам
+
+# сохранить имадж в архив
+docker image save -o path/to/arxiv.tar imageID
+
+# загрузить имадж из архива
+docker load -i path/to/arxiv.tar
