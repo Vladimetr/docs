@@ -7,7 +7,9 @@ docker run -d --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik/network --gpus 'dev
 sudo docker run -it --rm  --name kochetkov -v/mnt:/mnt -v/mnt/raid10/home:/home --gpus 'device=7' 4ac7b40d9e67
 
 # local container
+newgrp docker (without sudo in future)
 sudo docker run -it --rm --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik --gpus 'device=0' speaker_id_image
+sudo docker run -d --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik --gpus 'device=0' speaker_id_image
 
 # монтировать папку из системы в докер среду)
 -v <dir in our os>:<this dir in container>
