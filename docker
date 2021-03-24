@@ -9,7 +9,7 @@ sudo docker run -it --rm  --name kochetkov -v/mnt:/mnt -v/mnt/raid10/home:/home 
 # local container
 newgrp docker (without sudo in future)
 sudo docker run -it --rm --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik --gpus 'device=0' speaker_id_image
-sudo docker run -d --name kochetkov -v/mnt:/mnt -w/mnt/nvme/vovik --gpus 'device=0' speaker_id_image
+sudo docker run -d --name eend -v/mnt:/mnt -w/mnt/nvme/vovik/network/eend_diarization --gpus 'device=0' speaker_id_image
 
 # монтировать папку из системы в докер среду)
 -v <dir in our os>:<this dir in container>
@@ -44,7 +44,7 @@ docker pull image_name
 # после добавления/удаления либ в имадже можно сохранить изменения в нем.
 # нужно открыть контейнер на базе нашего имаджа. Установить в него либы
 # затем в новом окне консоли узнаем ID контейнера, в котором проводились изменения.
-docker commit -m "my description" -a "author" container_ID IMAGE_NAME:TAG
+docker commit -m "my description" -a "author" container_ID IMAGE_NAME NEW_IMAGE_NAME:TAG
 
 # задать имаджу новый IMAGE_NAME:TAG
 docker tag IMAGE_ID NEW_IMAGE_NAME:NEW_TAG
