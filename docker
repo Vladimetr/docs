@@ -44,7 +44,8 @@ docker pull image_name
 # после добавления/удаления либ в имадже можно сохранить изменения в нем.
 # нужно открыть контейнер на базе нашего имаджа. Установить в него либы
 # затем в новом окне консоли узнаем ID контейнера, в котором проводились изменения.
-docker commit -m "my description" -a "author" container_ID IMAGE_NAME NEW_IMAGE_NAME:TAG
+docker commit -m "my description" -a "author" container_ID NEW_IMAGE_NAME:TAG
+# если NEW_IMAGE_NAME == OLD_IMAGE_NAME , имадж перезаписывается (IMAGE_ID не меняется)
 
 # задать имаджу новый IMAGE_NAME:TAG
 docker tag IMAGE_ID NEW_IMAGE_NAME:NEW_TAG
