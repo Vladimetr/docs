@@ -63,6 +63,14 @@ docker export container_id
 docker run ... image_id:tag
 # image_id:latest (by default)
 
+# можно посмотреть историю сборки имаджа
+# если он был создан на основе другого имаджа
+# будет написан ImageID родителя
+docker image history IMAGEID
+
+# использовать Dockerfile для сборки имаджа
+docker build --tag IMAGEID:tag dir_with_Dockerfile
+
 htop - информация по процессам
 
 
